@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html><head><title>Video/Canvas Demo 4</title> 
+    <script> 
+    document.addEventListener('DOMContentLoaded', function(){
+        var v = document.getElementById('v');
+        var canvas = document.getElementById('c');
+        var context = canvas.getContext('2d');
+        var back = document.createElement('canvas')
+        var backcontext = back.getContext('2d');
+     
+        var cw,ch;
+     
+        v.addEventListener('play', function(){
+            cw = v.clientWidth;
+            ch = v.clientHeight;
+            canvas.width = cw;
+            canvas.height = ch;
+            back.width = cw;
+            back.height = ch;
+            draw(v,context,backcontext,cw,ch);
+        },false);
+     
+    },false);
+     
+    function draw(v,c,bc,cw,ch) {
+        if(v.paused || v.ended)	return false;
+        // First, draw it into the backing canvas
+        bc.drawImage(v,0,0,cw,ch);
+        // Grab the pixel data from the backing canvas
+        var idata = bc.getImageData(0,0,cw,ch);
+        var data = idata.data;
+        var w = idata.width;
+        var limit = data.length
+
+        // chuyển về ảnh grayscale
+        for(var i = 0; i < data.length; i+=4) {
+            var r = data[i];
+            var g = data[i+1];
+            var b = data[i+2];
+            var brightness = (3*r+4*g+b)>>>3;
+            data[i] = brightness;
+            data[i+1] = brightness;
+            data[i+2] = brightness;
+	    }
+
+        var offset = w * 4 
+        var list = []
+        // Loop through the subpixels, convoluting each using an edge-detection matrix.
+        for(var i = 0; i < limit; i+=4) {
+            // bien canh ngang
+            horizontal = - data[i - 4] - data[i - 4] - data[i - offset - 4] - data[i + offset - 4]
+            + data[i + 4] + data[i + 4] + data[i - offset + 4] + data[i + offset + 4];
+
+            // bien canh doc
+            vertical = + data[i - offset] + data[i - offset] + data[i - offset - 4] + data[i - offset + 4]
+            - data[i + offset] - data[i + offset] - data[i + offset - 4] - data[i + offset + 4];
+            
+            var temp = Math.abs(horizontal) + Math.abs(vertical)
+            list.push(temp)
+            // data[i + 1] = data[i]
+            // data[i + 2] = data[i]
+        }
+        var max = 0
+        for(var i = 0; i < list.length; i++){
+            if(max < list[i]){
+                max = list[i]
+            }
+        }
+        range = 255 * 1.0 / max
+        // scale ảnh về giá trị 0-255
+        for(var i = 0; i < list.length; i++){
+            var indexImg = i*4
+            data[indexImg] = list[i] * range
+            data[indexImg + 1] = data[indexImg]
+            data[indexImg + 2] = data[indexImg]
+        }
+        // Draw the pixels onto the visible canvas
+        c.putImageData(idata,0,0);
+        // Start over!
+        setTimeout(draw,20,v,c,bc,cw,ch);
+    }
+    </script> 
+     
+    
+     
+    </head><body><video id="v" controls="" loop=""> 
+        <source src="video.webm" type="video/webm"> 
+        <source src="video.ogg" type="video/ogg"> 
+        <source src="video.mp4" type="video/mp4"> 
+    </video> 
+    <canvas id="c"></canvas> 
+     
+    <style> 
+    #c {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -180px 0 0 20px;
+    }
+     
+    #v {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -180px 0 0 -500px;
+    }
+    </style> </body></html>
