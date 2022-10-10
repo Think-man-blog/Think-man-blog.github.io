@@ -48,13 +48,13 @@ $$\mathbf{x}^{t+1} = \mathbf{F}*\mathbf{x}^{t}= \begin{bmatrix}
 \begin{bmatrix}
 position^{t} \\
 velocity^{t}
-\end{bmatrix} \\ = 
-\begin{bmatrix}
+\end{bmatrix} \\ 
+
+= \begin{bmatrix}
 position^{t} + velocity^{t}\\
 velocity^{t}
 \end{bmatrix}
-= 
-\begin{bmatrix}
+= \begin{bmatrix}
 position^{t + 1}\\
 velocity
 \end{bmatrix}
