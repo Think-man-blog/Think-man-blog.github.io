@@ -12,7 +12,7 @@ chiến dịch Apolo vào năm 1960. Vậy bộ lọc này phải được chứ
 là đủ manh mẽ để được áp dựng vào trong những chuyến hành trình
 trong không gian như vậy.
 
-<img src="./assets/images/Kalman_Filter/Kalman_Filter_thumbnail.jpg" width="600px" hieght="300px">
+[![Kalman Filter Logo](/assets\images\Kalman_Filter\Kalman_Filter_thumbnail.jpg)](https://www.youtube.com/watch?v=mwn8xhgNpFY)
 
 ***Đầu tiên mình sẽ tóm gọn lại Kalman Filter là gì:***
 
@@ -77,12 +77,11 @@ $$ \mathbf{y}^{t} = \mathbf{H}*\mathbf{x}^{t}
 \begin{bmatrix}
 1\\ 
 0
-\end{bmatrix} 
-*
+\end{bmatrix} *
 \begin{bmatrix}
 position^{t} \\
 velocity^{t}
-\end{bmatrix} \\\\ 
+\end{bmatrix} \\
 = \begin{bmatrix}
 position^{t} 
 \end{bmatrix} \\ 
