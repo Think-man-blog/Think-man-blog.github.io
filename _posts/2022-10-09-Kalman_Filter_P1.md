@@ -19,23 +19,27 @@ nhiên banh lại đi lệch một chút so với dự đoán của bạn 💨�
 
 Chúng ta bắt đầu với dự đoán torng Kalman Filter.
 Giả sử ta có vector chứa thông tin về vị trí và vận tốc của quả bóng: 
-$$ \mathbf{x} = \begin{bmatrix}
+$$ \mathbf{x} = \begin{bmatrix} 
 position \\
 velocity
 \end{bmatrix} $$ 
+
 hay tổng quát hơn $\mathbf{x} \in \mathbb{R}^{n}$ chứa n thông tin của $\mathbf{x}$ cần dự đoán. 
 
-Ma trận $ \mathbf{F} \in \mathbb{R}^{n*n}$ dùng tổ hợp tuyến tính của $\mathbf{n}$ thông tin từ $\mathbf{x}$ để dự đoán tráng thái (state) tiếp theo. Ví dụ ta xem như quả bóng chuyển động đều, dễ thấy rằng: $position^{t+1} = position^{t} + velocity$ giả sử $t = 1$. Lúc này ma trận $ \mathcal{F} $ của chúng ta sẽ là: 
+Ma trận $ \mathbf{F} \in \mathbb{R}^{n*n}$ dùng tổ hợp tuyến tính của $\mathbf{n}$ thông tin từ $\mathbf{x}$ để dự đoán tráng thái (state) tiếp theo. 
+
+Ví dụ ta xem như quả bóng chuyển động đều, dễ thấy rằng: $position^{t+1} = position^{t} + velocity$ giả sử $t = 1$. Lúc này ma trận $ \mathcal{F} $ của chúng ta sẽ là: 
 $$ \mathbf{F} = \begin{bmatrix}
 1&1\\ 
 0&1
 \end{bmatrix} $$ 
+
 Và (lưu ý vì là chuyển động đều nên vận tốc là hằng):
 $$\mathbf{x}^{t+1} = \mathbf{F}*\mathbf{x}^{t}= \begin{bmatrix}
 1&1\\ 
 0&1
-\end{bmatrix} * 
-
+\end{bmatrix} 
+* 
 \begin{bmatrix}
 position^{t} \\
 velocity^{t}
@@ -55,4 +59,5 @@ Tiếp theo đến quan sát $\mathbf{y}$, ở đây ví dụ như thứ ta quan
 $$ \mathbf{y} = \begin{bmatrix}
 position \\
 \end{bmatrix} $$ 
+
 Các bạn sẽ tự hỏi tại sao số chiều của quan sát (observer) và dự đoán (estimator) lại khác nhau. Vì mô hình muốn quan sát những thông tin mà các hệ thống không thể quan sát được và thực tế thông tin quan sát được ít hơn so với những gì muốn đo lường.
