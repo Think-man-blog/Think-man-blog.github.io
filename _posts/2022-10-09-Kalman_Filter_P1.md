@@ -29,12 +29,14 @@ hay tổng quát hơn $\mathbf{x} \in \mathbb{R}^{n}$ chứa n thông tin của 
 Ma trận $ \mathbf{F} \in \mathbb{R}^{n*n}$ dùng tổ hợp tuyến tính của $\mathbf{n}$ thông tin từ $\mathbf{x}$ để dự đoán tráng thái (state) tiếp theo. 
 
 Ví dụ ta xem như quả bóng chuyển động đều, dễ thấy rằng: $position^{t+1} = position^{t} + velocity$ giả sử $t = 1$. Lúc này ma trận $ \mathcal{F} $ của chúng ta sẽ là: 
+
 $$ \mathbf{F} = \begin{bmatrix}
-1&1\\ 
-0&1
+1 & 1\\ 
+0 & 1
 \end{bmatrix} $$ 
 
 Và (lưu ý vì là chuyển động đều nên vận tốc là hằng):
+
 $$\mathbf{x}^{t+1} = \mathbf{F}*\mathbf{x}^{t}= \begin{bmatrix}
 1&1\\ 
 0&1
