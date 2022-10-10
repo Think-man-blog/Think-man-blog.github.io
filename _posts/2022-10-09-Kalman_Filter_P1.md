@@ -19,6 +19,7 @@ nhiên banh lại đi lệch một chút so với dự đoán của bạn 💨�
 
 Chúng ta bắt đầu với dự đoán torng Kalman Filter.
 Giả sử ta có vector chứa thông tin về vị trí và vận tốc của quả bóng: 
+
 $$ \mathbf{x} = \begin{bmatrix} 
 position \\
 velocity
