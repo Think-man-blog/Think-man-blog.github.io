@@ -70,11 +70,10 @@ position \\
 
 ***Các bạn sẽ tự hỏi tại sao số chiều của quan sát (observer) và dự đoán (estimator) lại khác nhau. Vì mô hình muốn quan sát những thông tin mà các hệ thống không thể quan sát được và thực tế thông tin quan sát được ít hơn so với những gì muốn đo lường.***
 
-Và ma trận $ \mathbf{H} \in \mathbb{R}^{m*n}$ được gọi là mô hình quan sát (The observation model), chuyển đổi từ không gian dự đoán sang không gian quan sát, hay đơn giản hơn là sử dụng các tổ hợp tuyến tính thông tin của dự đoán $ \mathbf{x} $ sang thành quan sát $ \mathbf{y} $. 
+Và ma trận $ \mathbf{H} \in \mathbb{R}^{m*n}$ được gọi là mô hình quan sát (The observation model), chuyển đổi từ không gian dự đoán sang không gian quan sát, hay đơn giản hơn là sử dụng các tổ hợp tuyến tính thông tin của dự đoán $ \mathbf{x} $ sang thành quan sát $ \mathbf{y} $ 
 
 $$ \mathbf{y}^{t} = \mathbf{H}*\mathbf{x}^{t} 
-= 
-\begin{bmatrix}
+= \begin{bmatrix}
 1\\ 
 0
 \end{bmatrix} *
