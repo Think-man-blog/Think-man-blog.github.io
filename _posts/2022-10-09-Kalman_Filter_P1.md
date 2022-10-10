@@ -6,18 +6,20 @@ title: Algorithm 1 - Kalman Filter Part 1
 
 # 1. Đôi nét về Kalman Filter
 
+## 1.1 Giới thiệu chung
 Bạn có biết rằng Kalman Filter được sử dụng để dẫn đường cho
 chiến dịch Apolo vào năm 1960. Vậy bộ lọc này phải được chứng minh
 là đủ manh mẽ để được áp dựng vào trong những chuyến hành trình
 trong không gian như vậy.
 
-## Đầu tiên mình sẽ tóm gọn lại Kalman Filter là gì:
+***Đầu tiên mình sẽ tóm gọn lại Kalman Filter là gì:***
 
 Kalman Filter thực chất là một phương pháp dự đoán trạng thái tiếp theo của object, và dựa vào quan sát của hệ thống để có thê tinh chỉnh lại các thông số, tăng độ tin cây cho lần dự đoán tiếp theo. Ví dụ để dễ hiểu hơn: Khi bạn chơi bóng đá, ban sẽ dự đoán vị trí tiếp theo của quả bóng để đỡ đúng không nào ️⚽ (đây gọi là dự đoán), nhưng đột
 nhiên banh lại đi lệch một chút so với dự đoán của bạn 💨⚽ (đây gọi là quan sát) vậy ở lần dự đoán tiếp theo bạn sẽ sử dụng thông tin của quả bóng bị lệch hướng để có được dự đoán chính xác cao. Dễ hiểu phải không nào. Vậy thì làm sao mà Kalman Filter làm được như thế, hãy cùng mình
 đi sâu vào bài toán nhé 🤓🤓🤓.
 
-Chúng ta bắt đầu với dự đoán torng Kalman Filter.
+## 1.2 Kalman Filter
+Chúng ta bắt đầu với dự đoán trong Kalman Filter.
 Giả sử ta có vector chứa thông tin về vị trí và vận tốc của quả bóng: 
 
 $$ \mathbf{x} = \begin{bmatrix} 
