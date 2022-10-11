@@ -74,8 +74,7 @@ Và ma trận $ \mathbf{H} \in \mathbb{R}^{m*n}$ được gọi là mô hình qu
 
 $$ \mathbf{y}^{t} = \mathbf{H}*\mathbf{x}^{t} 
 = \begin{bmatrix}
-1\\ 
-0
+1 & 0
 \end{bmatrix} *
 \begin{bmatrix}
 position^{t} \\
