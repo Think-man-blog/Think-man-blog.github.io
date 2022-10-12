@@ -123,11 +123,11 @@ $(1)$ và $(2)$ là công thức cập nhật bình thường, tính toán kỳ 
 
 ***Cập nhật:***
 
-Đầu tiên ta tính toán hệ số $Kalman$ tại thời điểm $t+1$, $t+1$ lúc này là thời điểm mà bạn dự đoán quả bóng ⚽ sẽ di chuyển như thế nào trong tương lai ấy.
+Đầu tiên ta tính toán hệ số $Kalman$ tại thời điểm $t+1$, $t+1$ lúc này là thời điểm mà bạn dự đoán quả bóng⚽sẽ di chuyển như thế nào trong tương lai ấy.
 
 $$\mathbf{K}^{t+1} = \Sigma_{x}^{t+1}*\mathbf{H}^{\mathbf{T}} (\mathbf{R} + \mathbf{H}*\Sigma_{x}^{t+1}*\mathbf{H}^{\mathbf{T}})^{-1}  \hspace{1cm} (3)$$ 
 
-Sau đó bạn sẽ cập nhật lại các giá trị kỳ vọng và ma trận $covariance$ dựa vào hệ số $Kalman$ và quan sát tại thời điểm $t+1$, lúc này thời điểm $t+1$ đã xảy ra bạn mới quan sát được đúng chứ? Bạn còn nhớ quả bóng bị gió thổi bay 💨⚽ ở đầu bài viết không? Lúc này ta sẽ dùng quan sát này kèm với dự đoán lúc trước của bản thân để giúp cho lần dự đoán tiếp theo chính xác hơn.
+Sau đó bạn sẽ cập nhật lại các giá trị kỳ vọng và ma trận $covariance$ dựa vào hệ số $Kalman$ và quan sát tại thời điểm $t+1$, lúc này thời điểm $t+1$ đã xảy ra bạn mới quan sát được đúng chứ? Bạn còn nhớ quả bóng bị gió thổi bay💨⚽ở đầu bài viết không? Lúc này ta sẽ dùng quan sát này kèm với dự đoán lúc trước của bản thân để giúp cho lần dự đoán tiếp theo chính xác hơn.
 
 $$\overline{\mathbf{x}^{t+1}}' = \overline{\mathbf{x}^{t+1}} + \mathbf{K}^{t+1}*(\mathbf{y}^{t+1} - \mathbf{H}\overline{\mathbf{x}^{t+1}}) \hspace{1cm} (4)$$ 
 
