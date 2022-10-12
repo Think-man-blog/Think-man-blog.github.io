@@ -195,13 +195,15 @@ D^{-1}B^\mathsf{T}LBD^{-1}}
 \hspace{1cm} (15)
 $$
 
-Thế là ta đã xong với việc biểu diễn một ma trận nghịch đảo của ma trận vuông $\mathbf{M}$ dựa vào 4 khối ma trận con bên trong nó. Bạn có thấy ma trận này quen không, đúng rồi đấy nó chính là ma trận covariance.
+Thế là ta đã xong với việc biểu diễn một ma trận nghịch đảo của ma trận vuông $\mathbf{M}$ dựa vào 4 khối ma trận con bên trong nó. Bạn có thấy ma trận này quen không, đúng rồi đấy nó chính là ma trận covariance $\Sigma_z$.
 
 Với 
 $\mathbf{z} = \begin{bmatrix}
 \mathbf{x} \\
 \mathbf{y}
-\end{bmatrix};\space \mathbf{x}\in \mathbb{R}^{p}, \space \mathbf{y}\in \mathbb{R}^{q}$ và 
+\end{bmatrix};\space \mathbf{x}\in \mathbb{R}^{p}, \space \mathbf{y}\in \mathbb{R}^{q}$ 
+
+Và 
 $\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
 \Leftrightarrow
 \mathbf{z} \thicksim \mathcal{N}(
@@ -214,7 +216,9 @@ $\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
 \Sigma_{yx} & \Sigma_{yy}
 \end{bmatrix})$
 
-## 2.2 Chứng minh 
+Vì đây cũng là một bài toán không quá khó và cũng khá dễ hiểu nếu bạn vững các kiến thức về ma trận, độc giả có thể đọc thêm về [Multivariate Gaussian Distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution) để hiểu rõ về ma trận covariance này, vì về sau ta sẽ dùng nó nhiều đấy.
+
+## 2.2 Woodbury Matrix Identity
 
 
 
