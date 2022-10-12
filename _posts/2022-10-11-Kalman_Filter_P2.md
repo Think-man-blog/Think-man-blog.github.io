@@ -81,7 +81,7 @@ Xét ma trận $\mathbf{M}$ gồm $2 \times 2$ các khối $matrix$:
 $$\mathbf{M} = 
 \begin{bmatrix}
 \mathbf{A} & \mathbf{B} \\
-\mathbf{B}^{T} & \mathbf{D}
+\mathbf{B}^\mathsf{T} & \mathbf{D}
 \end{bmatrix} \hspace{1cm} (4)$$
 
 Với $\mathbf{A} \in \mathbb{R}^{p \times p}$, $\mathbf{B} \in \mathbb{R}^{p \times q}$ và $\mathbf{D} \in \mathbb{R}^{q \times q}$. Có thể suy ra kích thước của $\mathbf{M}\in \mathbb{R}^{(p+q) \times (p+q)}$ 
@@ -112,7 +112,7 @@ Từ $(4)$ và $(5)$ ta có:
 $$\mathbf{M} \times \mathbf{x} = \mathbf{y} \Leftrightarrow
 \begin{bmatrix}
 \mathbf{A} & \mathbf{B} \\
-\mathbf{B}^{T} & \mathbf{D}
+\mathbf{B}^\mathsf{T} & \mathbf{D}
 \end{bmatrix}
 \times 
 \begin{bmatrix}
@@ -128,7 +128,7 @@ $$\mathbf{M} \times \mathbf{x} = \mathbf{y} \Leftrightarrow
 $$\Rightarrow 
 \begin{bmatrix}
 \mathbf{A} \mathbf{x} + \mathbf{B}y \\
-\mathbf{B}^{T}\mathbf{x} + \mathbf{D}\mathbf{y}
+\mathbf{B}^\mathsf{T}\mathbf{x} + \mathbf{D}\mathbf{y}
 \end{bmatrix}=
 \begin{bmatrix}
 \mathbf{u} \\
@@ -140,25 +140,25 @@ Từ $(7)$ ta đi sẽ tìm $\mathbf{x}$ và $\mathbf{y}$:
 
 Ở dòng thứ hai của $(7)$:
 
-$$ \mathbf{y} = \mathbf{D}^{-1}(\mathbf{v}-\mathbf{B}^{T}\mathbf{x}) \hspace{1cm} (8)$$
+$$ \mathbf{y} = \mathbf{D}^{-1}(\mathbf{v}-\mathbf{B}^\mathsf{T}\mathbf{x}) \hspace{1cm} (8)$$
 
 Thế $(8)$ vào dòng thứ nhất của $(7)$:
 
-$$\mathbf{A} \mathbf{x} + \mathbf{B}\mathbf{D}^{-1}(\mathbf{v}-\mathbf{B}^{T}\mathbf{x}) = \mathbf{u} \Leftrightarrow  (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^{T})\mathbf{x} = \mathbf{u} -  \mathbf{B}\mathbf{D}^{-1}\mathbf{v} \hspace{1cm} (9)$$
+$$\mathbf{A} \mathbf{x} + \mathbf{B}\mathbf{D}^{-1}(\mathbf{v}-\mathbf{B}^\mathsf{T}\mathbf{x}) = \mathbf{u} \Leftrightarrow  (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^\mathsf{T})\mathbf{x} = \mathbf{u} -  \mathbf{B}\mathbf{D}^{-1}\mathbf{v} \hspace{1cm} (9)$$
 
 Kết hợp giữa $(8)$ và $(9)$ ta có được:
 
-$$\mathbf{x} = (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^{T})^{-1}\mathbf{u} - (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^{T})^{-1}\mathbf{B}\mathbf{D}^{-1}\mathbf{v} \hspace{1cm} (10)$$
+$$\mathbf{x} = (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^\mathsf{T})^{-1}\mathbf{u} - (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^\mathsf{T})^{-1}\mathbf{B}\mathbf{D}^{-1}\mathbf{v} \hspace{1cm} (10)$$
 
-$$\mathbf{y=D^{-1}B^{T}(A-BD^{-1}B^{T})^{-1}u + (D^{-1} + 
-D^{-1}B^{T}(A-BD^{-1}B^{T})^{-1}BD^{-1})v} \hspace{1cm} (11)$$
+$$\mathbf{y=D^{-1}B^\mathsf{T}(A-BD^{-1}B^\mathsf{T})^{-1}u + (D^{-1} + 
+D^{-1}B^\mathsf{T}(A-BD^{-1}B^\mathsf{T})^{-1}BD^{-1})v} \hspace{1cm} (11)$$
 
-Ta đặt $\mathbf{L = (A-BD^{-1}B^{T})^{-1}}$ để biểu thức đơn giản hơn, ta viết lại biểu thức $(10)$ và $(11)$.
+Ta đặt $\mathbf{L = (A-BD^{-1}B^\mathsf{T})^{-1}}$ để biểu thức đơn giản hơn, ta viết lại biểu thức $(10)$ và $(11)$.
 
 $$\mathbf{x = Lu - LBD^{-1}v}\hspace{1cm} (12)$$
 
-$$\mathbf{y=D^{-1}B^{T}Lu + (D^{-1} + 
-D^{-1}B^{T}LBD^{-1})v} \hspace{1cm} \hspace{1cm} (13)$$
+$$\mathbf{y=D^{-1}B^{\mathsf{T}}Lu + (D^{-1} + 
+D^{-1}B^\mathsf{T}LBD^{-1})v} \hspace{1cm} (13)$$
 
 Dễ dàng thấy được:
 
@@ -168,10 +168,51 @@ $$
 \mathbf{y}
 \end{bmatrix} = 
 \begin{bmatrix}
+\mathbf{L} & \mathbf{LBD^{-1}} \\
+\mathbf{D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
+D^{-1}B^\mathsf{T}LBD^{-1}}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{u} \\
+\mathbf{v}
+\end{bmatrix}
+\hspace{1cm} (14)$$
+
+Kết hợp giữa $(5)$ và $(14)$, ta có được:
+
+$$
+\mathbf{M} = 
+\begin{bmatrix}
+\mathbf{A} & \mathbf{B} \\
+\mathbf{B}^\mathsf{T} & \mathbf{D}
+\end{bmatrix}^{-1} = 
+\begin{bmatrix}
+\mathbf{L} & \mathbf{LBD^{-1}} \\
+\mathbf{D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
+D^{-1}B^\mathsf{T}LBD^{-1}}
+\end{bmatrix}
+\space với\space \mathbf{L = (A-BD^{-1}B^\mathsf{T})^{-1}} 
+\hspace{1cm} (15)
+$$
+
+Thế là ta đã xong với việc biểu diễn một ma trận nghịch đảo của ma trận vuông $\mathbf{M}$ dựa vào 4 khối ma trận con bên trong nó. Bạn có thấy ma trận này quen không, đúng rồi đấy nó chính là ma trận covariance.
+
+Với 
+$\mathbf{z} = \begin{bmatrix}
 \mathbf{x} \\
 \mathbf{y}
-\end{bmatrix}
-$$
+\end{bmatrix};\space \mathbf{x}\in \mathbb{R}^{p}, \space \mathbf{y}\in \mathbb{R}^{q}$ và 
+$\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
+\Leftrightarrow
+\mathbf{z} \thicksim \mathcal{N}(
+\begin{bmatrix}
+\mu_x \\
+\mu_y
+\end{bmatrix}, 
+\begin{bmatrix}
+\Sigma_{xx} & \Sigma_{xy} \\
+\Sigma_{yx} & \Sigma_{yy}
+\end{bmatrix})$
 
 ## 2.2 Chứng minh 
 
