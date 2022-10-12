@@ -1,7 +1,7 @@
 ---
 layout: post
 author: nguyenthanhminh
-title: Algorithm 1 - Kalman Filter Part 1
+title: Algorithm - Kalman Filter Part 1
 ---
 
 # 1. Đôi nét về Kalman Filter
@@ -90,7 +90,7 @@ Tuy nhiên trong thực tế chẳng bao giờ mọi chuyện xảy ra suôn s�
 
 $$\mathbf{x}^{t+1} = \mathbf{F}*\mathbf{x}^{t} + \mathbf{w}^{t}$$
 
-$$\mathbf{y}^{t+1} = \mathbf{H}*\mathbf{x}^{t} + \mathbf{v}^{t}$$
+$$\mathbf{y}^{t+1} = \mathbf{H}*\mathbf{x}^{t+1} + \mathbf{v}^{t+1}$$
 
 Với $\mathbf{w} \thicksim \mathcal{N}(0, \mathbf{Q}) \in \mathbb{R}^{n}$, và $\mathbf{v} \thicksim \mathcal{N}(0, \mathbf{R}) \in \mathbb{R}^{m}$, yếu tố $t$ đối với nhiễu có thể bỏ qua và xem $\mathbf{w}$ và $\mathbf{v}$ là 2 $\mathcal{vector}$ ngẫu nhiên.
 
