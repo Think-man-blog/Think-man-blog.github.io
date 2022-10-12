@@ -60,7 +60,11 @@ $p(x^{t})$ lần lượt là hàm phân bố xác suất của
 $\mathbf{y}^{t}$ và 
 $\mathbf{x}^{t}$ 
 
-Lúc này việc có thông tin về $\mathbf{y}^{t}$ sẽ giúp chúng ta cập nhật lại hàm phân bố xác suất cho $\mathbf{x}^{t}$ thông qua $p(x^{t}|y^{t}).$ Từ đó những quan sát tiếp theo sẽ mang độ chính xác cao hơn.
+Lúc này việc có thông tin về 
+$\mathbf{y}^{t}$ 
+sẽ giúp chúng ta cập nhật lại hàm phân bố xác suất cho 
+$\mathbf{x}^{t}$ thông qua 
+$p(x^{t}|y^{t}).$ Từ đó những quan sát tiếp theo sẽ mang độ chính xác cao hơn.
 
 Các blog hiện nay đều bỏ qua đi phần chứng minh này, nhưng mình sẽ chứng minh từng bước cho bạn thấy từ đâu mà hệ số $Kalman$ xuất hiện. 
 
@@ -151,11 +155,23 @@ D^{-1}B^{T}(A-BD^{-1}B^{T})^{-1}BD^{-1})v} \hspace{1cm} (11)$$
 
 Ta đặt $\mathbf{L = (A-BD^{-1}B^{T})^{-1}}$ để biểu thức đơn giản hơn, ta viết lại biểu thức $(10)$ và $(11)$.
 
-
 $$\mathbf{x = Lu - LBD^{-1}v}\hspace{1cm} (12)$$
 
 $$\mathbf{y=D^{-1}B^{T}Lu + (D^{-1} + 
 D^{-1}B^{T}LBD^{-1})v} \hspace{1cm} \hspace{1cm} (13)$$
+
+Dễ dàng thấy được:
+
+$$
+\begin{bmatrix}
+\mathbf{x} \\
+\mathbf{y}
+\end{bmatrix} = 
+\begin{bmatrix}
+\mathbf{x} \\
+\mathbf{y}
+\end{bmatrix}
+$$
 
 ## 2.2 Chứng minh 
 
