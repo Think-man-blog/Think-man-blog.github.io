@@ -66,9 +66,9 @@ sẽ giúp chúng ta cập nhật lại hàm phân bố xác suất cho
 $\mathbf{x}^{t}$ thông qua 
 $p(x^{t}|y^{t}).$ Từ đó những quan sát tiếp theo sẽ mang độ chính xác cao hơn.
 
-Các blog hiện nay đều bỏ qua đi phần chứng minh này, nhưng mình sẽ chứng minh từng bước cho bạn thấy từ đâu mà hệ số $Kalman$ xuất hiện. 
-
 # 2. Hệ số Kalman
+
+Các blog hiện nay đa số đều bỏ qua đi phần chứng minh này, nhưng mình sẽ chứng minh từng bước cho bạn thấy từ đâu mà hệ số $Kalman$ xuất hiện.
 
 Lưu ý từ đây sẽ nồng nặc mùi toán học, hãy đọc chậm rãi và cẩn thận nhé. Chúng ta sẽ chứng minh các bài toán nhỏ để ra được hệ số Kalman hoàn thiện nhé.
 
@@ -197,14 +197,20 @@ $$
 
 Thế là ta đã xong với việc biểu diễn một ma trận nghịch đảo của ma trận vuông $\mathbf{M}$ dựa vào 4 khối ma trận con bên trong nó. Bạn có thấy ma trận này quen không, đúng rồi đấy nó chính là ma trận covariance $\Sigma_z$.
 
-Với 
-$\mathbf{z} = \begin{bmatrix}
+Với:
+
+$$
+\mathbf{z} = 
+\begin{bmatrix}
 \mathbf{x} \\
 \mathbf{y}
-\end{bmatrix};\space \mathbf{x}\in \mathbb{R}^{p}, \space \mathbf{y}\in \mathbb{R}^{q}$ 
+\end{bmatrix};\space \mathbf{x}\in \mathbb{R}^{p}, \space \mathbf{y}\in \mathbb{R}^{q}
+$$
 
-Và 
-$\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
+Và:
+
+$$
+\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
 \Leftrightarrow
 \mathbf{z} \thicksim \mathcal{N}(
 \begin{bmatrix}
@@ -214,14 +220,84 @@ $\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
 \begin{bmatrix}
 \Sigma_{xx} & \Sigma_{xy} \\
 \Sigma_{yx} & \Sigma_{yy}
-\end{bmatrix})$
+\end{bmatrix})
+$$
 
 Vì đây cũng là một bài toán không quá khó và cũng khá dễ hiểu nếu bạn vững các kiến thức về ma trận, độc giả có thể đọc thêm về [Multivariate Gaussian Distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution) để hiểu rõ về ma trận covariance này, vì về sau ta sẽ dùng nó nhiều đấy.
 
 ## 2.2 Woodbury Matrix Identity
 
+Woodbury Matrix Identity - Đồng nhất thức ma trận Woodbury, đồng nhất thức giúp tính toán biểu thức 
+$\mathbf{(A+UCV)^{-1}}$
+nhanh chóng hơn khi đã biết $\mathbf{A^{-1}}$.
 
+Kích thước của các ma trận: 
+$\mathbf{A} \in \mathbb{R}^{n \times n}$, $\mathbf{U, V} \in \mathbb{R}^{n \times k}$ và $\mathbf{C} \in \mathbb{R}^{k \times k}$ và công thức của nó là:
 
+$$\mathbf{(A+UCV)^{-1} = A^{-1} - A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}} \hspace{1cm} (16)
+$$
 
+😱😱😱 ***Cái gì thế này, chẳng phải phía trên đã bảo sẽ giúp tính toán nhanh hơn cơ mà, sao mà lại dài đến như thế này!!!***
 
+Vậy chúng ta hãy lần lượt phân tích chi phí tính toán của biểu thức 
+$\mathbf{(A+UCV)^{-1}}$ 
+khi chưa áp dụng "Đồng nhất thức Woodbury" nhé.
 
+- Cứ mỗi phép cộng/trừ giữa hai ma trận có khích thước $a \times b$ và $a \times b$ có chi phí là $a \times b$ 
+
+- Cứ mỗi phép nhân giữa hai ma trận có khích thước $a \times b$ và $b \times c$ có chi phí là $a \times b \times c$
+- Nghịch đảo ma trận vuông $a \times a$ sẽ có chi phí là $a^{3}$
+
+$\mathbf{(A+UCV)^{-1}}$  bao gồm 2 phép nhân, 1 phép cộng và 1 phép nghịch đảo. Tổng chi phí tính toán lúc này sẽ là:
+
+$$\mathbf{n \times k \times k + n \times k \times n + n \times n + n \times n \times n = n^{3} + n^{2}k + nk^{2}}$$
+
+$\mathbf{A^{-1} - A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}}$ 
+bao gồm 6 phép nhân, 2 phép cộng/trừ và 2 phép nghịch đảo của 
+$\mathbf{C^{-1}}$ 
+"***ta đã giả sử biết trước
+$\mathbf{A^{-1}}$***". Lúc này chi phí tính toán là:
+
+$$\mathbf{k^{3} + 2k^{2}n + 4n^{2}k + k^{2}  + n^{2}}$$
+
+Rõ ràng, bậc 3 của chúng ta lúc này đã đưa về cho 
+$\mathbf{k}$ 
+thay vì là 
+$\mathbf{n}$
+như lúc trước, và nếu $\mathbf{n \gg k}$ thì thật sự, tốc độ tính toán lúc này giảm đi rất nhiều lần. Hình bên dưới mô tả sự tăng trưởng của $\mathbf{n}$, ký hiệu trong hình sẽ là $\mathbf{p}$.
+
+[![Woodbury performance](/assets\images\Kalman_Filter\woodbury.png)](https://stackoverflow.com/questions/53564529/woodbury-identity-for-fast-matrix-inversion-slower-than-expected)
+
+***Note: hãy tính toán 6 phép nhân thông minh, đừng để bị dính vào phép nhân $\mathbf{n^{3}}$ nhé. Còn một điều nữa, "Đồng nhất thức ma trận Woodbury" còn có thể áp dụng cho trường hợp ma trận $\mathbf{A}$ là ma trận tam giác.***
+
+Vậy điều này có nghĩa gì 🤔🤔🤔, bạn có để ý thấy 
+$\mathbf{(A+UCV)^{-1}}$ 
+giống với ma trận nào của chúng ta không?
+
+Bạn đoán đúng rồi đấy, đó chính là ma trận 
+$\mathbf{L = (A-BD^{-1}B^\mathsf{T})^{-1}}$
+. Chà chà, mọi thứ có vẻ work với nhau rồi chứ.
+Hãy chờ đợi bí mật được khai phá ở mục tiếp theo nhé.
+
+Nào hãy cùng mình chứng minh về "Đồng nhất thức ma trận Woodbury" nhé.
+
+Ta sẽ bắt đầu từ hai biểu thức cơ bản sau:
+
+$$\mathbf{(I+P)^{-1} = (I+P^{-1})(I+P-P) = I - (I+P)^{-1}P} \hspace{1cm} (*)$$
+
+$$\mathbf{P + PQP = P(I + QP) = (I + PQ)P}$$
+
+$$
+Suy\space ra:\space \mathbf{(I + QP)^{-1}P = P(I + PQ)^{-1}}
+\hspace{1cm} (**)
+$$
+
+Từ đó ta khai triển biểu thức:
+
+$$\mathbf{
+\begin{aligned}
+(A+UCV)^{-1} & = & (A[I+A^{-1}UCV])^{-1} \\
+& = & \left[I +A^{-1}UCV\right]^{-1}A^{-1} \\
+& = & \left[I - (I+A^{-1}UCV)^{-1}A^{-1}UCV\right]A^{-1} \hspace{1cm} \text{dùng biểu thức (*)}\\
+& = & 
+\end{aligned}}$$
