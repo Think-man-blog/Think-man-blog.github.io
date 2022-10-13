@@ -288,16 +288,25 @@ $$\mathbf{(I+P)^{-1} = (I+P^{-1})(I+P-P) = I - (I+P)^{-1}P} \hspace{1cm} (*)$$
 $$\mathbf{P + PQP = P(I + QP) = (I + PQ)P}$$
 
 $$
-Suy\space ra:\space \mathbf{(I + QP)^{-1}P = P(I + PQ)^{-1}}
+Suy\space ra:\space \mathbf{(I + PQ)^{-1}P = P(I + QP)^{-1}}
 \hspace{1cm} (**)
 $$
 
 Từ đó ta khai triển biểu thức:
 
-$$\mathbf{
-\begin{aligned}
-(A+UCV)^{-1} & = & (A[I+A^{-1}UCV])^{-1} \\
-& = & \left[I +A^{-1}UCV\right]^{-1}A^{-1} \\
-& = & \left[I - (I+A^{-1}UCV)^{-1}A^{-1}UCV\right]A^{-1} \hspace{1cm} \text{dùng biểu thức (*)}\\
-& = & 
-\end{aligned}}$$
+$$
+\begin{equation*}
+\begin{split}
+\mathbf{(A+UCV)^{-1}} & = (A[I+A^{-1}UCV])^{-1} \\
+& = \left[I +A^{-1}UCV\right]^{-1}A^{-1} \\
+& = \left[I - (I+A^{-1}UCV)^{-1}A^{-1}UCV\right]A^{-1},\space \text{dùng biểu thức (*)}\space P = A^{-1}UCV\\
+& = A^{-1} - (I+A^{-1}UCV)^{-1}A^{-1}UCVA^{-1} \\
+& = A^{-1} - A^{-1}(I+UCVA^{-1})^{-1}UCVA^{-1}, \space \text{dùng biểu thức (**)}\space P = A^{-1}, Q = UCV\\
+& = A^{-1} - A^{-1}U(I+CVA^{-1}U)^{-1}CVA^{-1}, \space \text{dùng biểu thức (**)}\space P = U, Q = CVA^{-1}, \space\\
+& = A^{-1} - A^{-1}U(CC^{-1}+CVA^{-1}U)^{-1}CVA^{-1}, \space \text{giả sử C khả nghịch}\\
+& = A^{-1} - A^{-1}U(C^{-1} + VA^{-1}U)^{-1}C^{-1}CVA^{-1}, \space \text{lấy C làm nhân tử chung}\\
+& = A^{-1} - A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}, \space \text{điều phải chứng minh}\\
+\end{split}
+\end{equation*}$$
+
+## 2.3 Conditional Gaussian distributions
