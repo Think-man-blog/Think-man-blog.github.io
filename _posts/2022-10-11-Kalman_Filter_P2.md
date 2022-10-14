@@ -187,7 +187,7 @@ $$
 \mathbf{B}^\mathsf{T} & \mathbf{D}
 \end{bmatrix}^{-1} = 
 \begin{bmatrix}
-\mathbf{L} & \mathbf{LBD^{-1}} \\
+\mathbf{L} & \mathbf{-LBD^{-1}} \\
 \mathbf{D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
 D^{-1}B^\mathsf{T}LBD^{-1}}
 \end{bmatrix}
