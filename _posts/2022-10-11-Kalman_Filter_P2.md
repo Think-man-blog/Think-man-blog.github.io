@@ -297,16 +297,50 @@ Từ đó ta khai triển biểu thức:
 $$
 \begin{equation*}
 \begin{split}
-\mathbf{(A+UCV)^{-1}} & = (A[I+A^{-1}UCV])^{-1} \\
-& = \left[I +A^{-1}UCV\right]^{-1}A^{-1} \\
-& = \left[I - (I+A^{-1}UCV)^{-1}A^{-1}UCV\right]A^{-1},\space \text{dùng biểu thức (*)}\space P = A^{-1}UCV\\
-& = A^{-1} - (I+A^{-1}UCV)^{-1}A^{-1}UCVA^{-1} \\
-& = A^{-1} - A^{-1}(I+UCVA^{-1})^{-1}UCVA^{-1}, \space \text{dùng biểu thức (**)}\space P = A^{-1}, Q = UCV\\
-& = A^{-1} - A^{-1}U(I+CVA^{-1}U)^{-1}CVA^{-1}, \space \text{dùng biểu thức (**)}\space P = U, Q = CVA^{-1}, \space\\
-& = A^{-1} - A^{-1}U(CC^{-1}+CVA^{-1}U)^{-1}CVA^{-1}, \space \text{giả sử C khả nghịch}\\
-& = A^{-1} - A^{-1}U(C^{-1} + VA^{-1}U)^{-1}C^{-1}CVA^{-1}, \space \text{lấy C làm nhân tử chung}\\
-& = A^{-1} - A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}, \space \text{điều phải chứng minh}\\
+\mathbf{(A+UCV)^{-1}} & = \mathbf{(A[I+A^{-1}UCV])^{-1}} \\
+& = \mathbf{\left[I +A^{-1}UCV\right]^{-1}A^{-1}} \\
+& = \mathbf{\left[I - (I+A^{-1}UCV)^{-1}A^{-1}UCV\right]A^{-1}},\space \text{dùng biểu thức (*)}\space P = A^{-1}UCV\\
+& = \mathbf{A^{-1} - (I+A^{-1}UCV)^{-1}A^{-1}UCVA^{-1}} \\
+& = \mathbf{A^{-1} - A^{-1}(I+UCVA^{-1})^{-1}UCVA^{-1}}, \space \text{dùng biểu thức (**)}\space P = A^{-1}, Q = UCV\\
+& = \mathbf{A^{-1} - A^{-1}U(I+CVA^{-1}U)^{-1}CVA^{-1}}, \space \text{dùng biểu thức (**)}\space P = U, Q = CVA^{-1}, \space\\
+& = \mathbf{A^{-1} - A^{-1}U(CC^{-1}+CVA^{-1}U)^{-1}CVA^{-1}}, \space \text{giả sử C khả nghịch}\\
+& = \mathbf{A^{-1} - A^{-1}U(C^{-1} + VA^{-1}U)^{-1}C^{-1}CVA^{-1}}, \space \text{lấy C làm nhân tử chung}\\
+& = \mathbf{A^{-1} - A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1}}, \space \text{điều phải chứng minh}\\
 \end{split}
 \end{equation*}$$
 
 ## 2.3 Conditional Gaussian distributions
+
+Đây chính là phần chính của phần giải thích hệ số Kalman. Các bạn hãy tập trung theo dõi nhé.
+
+Chúng ta đã phân tích ở trên về $p(x^{t}|y^{t})$, là hàm phân phối xác suất sẽ giúp ta cập nhật lại niềm tin về $x^{t}$ khi đã biết $y^{t}$.
+
+Lúc này ta xét vector:
+
+$$
+\mathbf{z} = 
+\begin{bmatrix}
+\mathbf{x} \\
+\mathbf{y}
+\end{bmatrix};\space \mathbf{x}\in \mathbb{R}^{p}, \space \mathbf{y}\in \mathbb{R}^{q}
+$$
+
+Và:
+
+$$
+\mathbf{z} \thicksim \mathcal{N}(\mu_z,\Sigma_z)
+\Leftrightarrow
+\mathbf{z} \thicksim \mathcal{N}(
+\begin{bmatrix}
+\mu_x \\
+\mu_y
+\end{bmatrix}, 
+\begin{bmatrix}
+\Sigma_{xx} & \Sigma_{xy} \\
+\Sigma_{yx} & \Sigma_{yy}
+\end{bmatrix})
+$$
+
+Dành cho những bạn chưa biết về ma trận covariance này có thể đọc thêm ở đây [Multivariate Gaussian Distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution). Đặc tình của ma trận covariance này chính là:
+
+$$$$
