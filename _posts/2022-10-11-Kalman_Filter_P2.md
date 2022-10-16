@@ -150,14 +150,14 @@ Kết hợp giữa $(8)$ và $(9)$ ta có được:
 
 $$\mathbf{x} = (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^\mathsf{T})^{-1}\mathbf{u} - (\mathbf{A} - \mathbf{B}\mathbf{D}^{-1}\mathbf{B}^\mathsf{T})^{-1}\mathbf{B}\mathbf{D}^{-1}\mathbf{v} \hspace{1cm} (10)$$
 
-$$\mathbf{y=D^{-1}B^\mathsf{T}(A-BD^{-1}B^\mathsf{T})^{-1}u + (D^{-1} + 
+$$\mathbf{y=-D^{-1}B^\mathsf{T}(A-BD^{-1}B^\mathsf{T})^{-1}u + (D^{-1} + 
 D^{-1}B^\mathsf{T}(A-BD^{-1}B^\mathsf{T})^{-1}BD^{-1})v} \hspace{1cm} (11)$$
 
 Ta đặt $\mathbf{L = (A-BD^{-1}B^\mathsf{T})^{-1}}$ để biểu thức đơn giản hơn, ta viết lại biểu thức $(10)$ và $(11)$.
 
 $$\mathbf{x = Lu - LBD^{-1}v}\hspace{1cm} (12)$$
 
-$$\mathbf{y=D^{-1}B^{\mathsf{T}}Lu + (D^{-1} + 
+$$\mathbf{y=-D^{-1}B^{\mathsf{T}}Lu + (D^{-1} + 
 D^{-1}B^\mathsf{T}LBD^{-1})v} \hspace{1cm} (13)$$
 
 Dễ dàng thấy được:
@@ -169,7 +169,7 @@ $$
 \end{bmatrix} = 
 \begin{bmatrix}
 \mathbf{L} & \mathbf{-LBD^{-1}} \\
-\mathbf{D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
+\mathbf{-D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
 D^{-1}B^\mathsf{T}LBD^{-1}}
 \end{bmatrix}
 \begin{bmatrix}
@@ -188,7 +188,7 @@ $$
 \end{bmatrix}^{-1} = 
 \begin{bmatrix}
 \mathbf{L} & \mathbf{-LBD^{-1}} \\
-\mathbf{D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
+\mathbf{-D^{-1}B^{\mathsf{T}}L} & \mathbf{D^{-1} + 
 D^{-1}B^\mathsf{T}LBD^{-1}}
 \end{bmatrix}
 \space với\space \mathbf{L = (A-BD^{-1}B^\mathsf{T})^{-1}} 
@@ -313,7 +313,11 @@ $$
 
 Đây chính là phần chính của phần giải thích hệ số Kalman. Các bạn hãy tập trung theo dõi nhé.
 
-Chúng ta đã phân tích ở trên về $p(x^{t}|y^{t})$, là hàm phân phối xác suất sẽ giúp ta cập nhật lại niềm tin về $x^{t}$ khi đã biết $y^{t}$.
+Chúng ta đã phân tích ở trên về 
+$p(x^{t}|y^{t})$
+, là hàm phân phối xác suất sẽ giúp ta cập nhật lại niềm tin về 
+$x^{t}$
+khi đã biết $y^{t}$.
 
 Lúc này ta xét vector:
 
@@ -343,4 +347,131 @@ $$
 
 Dành cho những bạn chưa biết về ma trận covariance này có thể đọc thêm ở đây [Multivariate Gaussian Distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution). Đặc tình của ma trận covariance này chính là:
 
-$$$$
+$$\mathbf{\Sigma_z^\mathsf{T} = \Sigma_z \space\text{và}\space \Sigma_{xy}^\mathsf{T} = \Sigma_{yx}}$$
+
+Xét ma trận nghịch đảo của $\mathbf{\Sigma_z}$:
+
+$$\mathbf{\Sigma_z^{-1}} = 
+\begin{bmatrix}
+\mathbf{\Sigma_{xx}} & \mathbf{\Sigma_{xy}} \\
+\mathbf{\Sigma_{yx}} & \mathbf{\Sigma_{yy}}
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+\mathbf{
+L^{-1}} & \mathbf{-L^{-1}\Sigma_{xy}\Sigma_{yy}^{-1}} \\
+\mathbf{-\Sigma_{yy}^{-1}\Sigma_{yx}L^{-1}} & \mathbf{\Sigma_{yy}^{-1} + \Sigma_{yy}^{-1}\Sigma_{yx}L^{-1}\Sigma_{xy}\Sigma_{yy}^{-1}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{\Lambda_{xx}} & \mathbf{\Lambda_{xy}} \\
+\mathbf{\Lambda_{yx}} & \mathbf{\Lambda_{yy}}
+\end{bmatrix}
+\hspace{1cm} (17)
+$$
+
+$$\text{Với: } \mathbf{L = \Sigma_{xx} - \Sigma_{xy}\Sigma_{yy}^{-1}\Sigma_{yx}}$$
+
+Với kích thước của từng
+$\mathbf{\Lambda_{xx},\space\Lambda_{xy},\space\Lambda_{yx},\space\Lambda_{yy}}$ 
+sẽ tương ứng với 
+$\mathbf{\Sigma_{xx},\space\Sigma_{xy},\space\Sigma_{yx},\space\Sigma_{yy}}$ 
+
+Bây giờ chúng ta hãy viết lại khoảng cách Mahalanobis của hàm phân phối xác suất Gaussian nhé, có thể đọc ở đây nếu bạn chưa biết [Multivariate Gaussian Distribution](https://en.wikipedia.org/wiki/Multivariate_normal_distribution).
+
+$$
+\begin{equation*}
+\begin{split}
+\mathbf{\left(z-\mu_z\right)^{\mathsf{T}}\Sigma_{z}^{-1}\left(z-\mu_z\right)}
+& =
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}^{\mathsf{T}}
+\begin{bmatrix}
+\mathbf{\Lambda_{xx}} & \mathbf{\Lambda_{xy}} \\
+\mathbf{\Lambda_{yx}} & \mathbf{\Lambda_{yy}}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}
+\\
+& = 
+\mathbf{\left(x-\mu_x\right)^{\mathsf{T}}\Lambda_{xx}^{-1}\left(x-\mu_x\right)}
++
+\mathbf{\left(x-\mu_x\right)^{\mathsf{T}}\Lambda_{xy}^{-1}\left(y-\mu_y\right)}\\ &\quad
++ 
+\mathbf{\left(y-\mu_y\right)^{\mathsf{T}}\Lambda_{yx}^{-1}\left(x-\mu_x\right)}
++
+\mathbf{\left(y-\mu_y\right)^{\mathsf{T}}\Lambda_{yy}^{-1}\left(y-\mu_y\right)} (***) \\
+& = 
+\end{split}
+\end{equation*} 
+$$
+
+***Note:*** Mình sẽ giải thích kết quả của Mahalanobis ở trên cho đọc giả dễ hiểu và dễ dàng tiếp cận hơn.
+
+$(***)$ Ở đây là một cách viết lại của phép nhân ma trận, mình sẽ ví dụ một cách dễ hiểu để bạn hiểu được:
+
+$$
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}^{\mathsf{T}}
+=
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+0
+\end{bmatrix}^{\mathsf{T}}
++
+\begin{bmatrix}
+0 \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}^{\mathsf{T}}
+$$
+
+Lúc này kết quả của Mahalanobis distance lúc này chính là:
+
+$$
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}^{\mathsf{T}}
+\begin{bmatrix}
+\mathbf{\Lambda_{xx}} & \mathbf{\Lambda_{xy}} \\
+\mathbf{\Lambda_{yx}} & \mathbf{\Lambda_{yy}}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+0
+\end{bmatrix}^{\mathsf{T}}
+\begin{bmatrix}
+\mathbf{\Lambda_{xx}} & \mathbf{\Lambda_{xy}} \\
+\mathbf{\Lambda_{yx}} & \mathbf{\Lambda_{yy}}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}
++
+\begin{bmatrix}
+0 \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}^{\mathsf{T}}
+\begin{bmatrix}
+\mathbf{\Lambda_{xx}} & \mathbf{\Lambda_{xy}} \\
+\mathbf{\Lambda_{yx}} & \mathbf{\Lambda_{yy}}
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{x} - \mu_{x} \\
+\mathbf{y} - \mu_{y}
+\end{bmatrix}
+$$
+
+Tương tự, hãy chia các ma trận thành tổng các ma trận có các thành phần khuyết bằng 0, kết quả của Mahalanobis distance là một số, vì thế ta có thể lược bỏ phần khuyết bằng 0 nếu nó không ảnh hưởng đến kết quả.
