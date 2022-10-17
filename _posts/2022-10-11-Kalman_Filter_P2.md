@@ -555,9 +555,11 @@ $$
 \mu_* = \mathbf{\mu_x} + \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}),\space\mathbf{L = \Sigma_{xx} - \Sigma_{xy}\Sigma_{yy}^{-1}\Sigma_{yx}} \hspace{1cm} \text{(2.3-3)}
 $$
 
+Tuy nhiên nếu bạn cập nhật cho [$\overline{\mathbf{x}^{t+1}}'$](https://think-man-blog.github.io/2022/10/09/Kalman_Filter_P1.html) ngay tại lúc này thật là phí phạm phần đồng nhất thức ma trận woodbury mà mình đã trình bày, hãy đi sâu hơn một tí nữa nhé. 
 
 
 
+# 3 Giải thích về chú thích cho các mục.
 
 
 
