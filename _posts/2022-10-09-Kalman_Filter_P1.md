@@ -139,7 +139,7 @@ $$ \overline{\mathbf{x}^{t+1}}:=\overline{\mathbf{x}^{t+1}}' $$
 
 $$ {\Sigma_{x}^{t+1}}:={\Sigma_{x}^{t+1}}' $$
 
-Bạn sẽ tự hỏi $\overline{\mathbf{x}^{t+1}}'$ và $ {\Sigma_{x}^{t+1}}'$ làm sao sẽ giúp cho dự đoán tiếp theo chính xác hơn phải không, và hệ số $Kalman$ ở đâu ra. Mình hi vọng có thể giải thích và chứng minh rõ cho bạn ở ***phần 2*** của bài viết, hãy đón chờ nhé.
+Bạn sẽ tự hỏi $\overline{\mathbf{x}^{t+1}}'$ và $ {\Sigma_{x}^{t+1}}'$ làm sao sẽ giúp cho dự đoán tiếp theo chính xác hơn phải không, và hệ số $Kalman$ ở đâu ra. Mình hi vọng có thể giải thích và chứng minh rõ cho bạn ở [***phần 2***](https://think-man-blog.github.io/2022/10/11/Kalman_Filter_P2.html) của bài viết, hãy đón chờ nhé.
 
 # 3. Tài liệu
 
