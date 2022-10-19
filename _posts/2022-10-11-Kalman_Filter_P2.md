@@ -480,16 +480,12 @@ Lúc này $p(x|y)$ đã ra hình dáng của hàm phân phối xác suất Gauss
 $$
 \large
 \frac 
-{
-    \mathbf{\sqrt{(2\pi)^{q}|\Sigma_y|}}
-}
-{
-    \mathbf{\sqrt{(2\pi)^{p+q}|\Sigma_z|}}
-}
+{\mathbf{\sqrt{(2\pi)^{q} |\Sigma_y|}}} 
+{\mathbf{\sqrt{(2\pi)^{p+q} |\Sigma_z|}}}
 = 
 \frac
 {1}
-{{\mathbf{\sqrt{(2\pi)^{p}|L|}}}}
+{\mathbf{\sqrt{(2\pi)^{p}|L|}}}
 $$
 
 $$
@@ -533,7 +529,7 @@ $$
 & =
 \frac
 {1}
-{{\mathbf{\sqrt{(2\pi)^{p}|L|}}}} \hspace{1cm} \text{(điều phải chứng minh)}
+{\mathbf{\sqrt{(2\pi)^{p}|L|}}} \hspace{1cm} \text{(điều phải chứng minh)}
 \end{aligned}
 \end{equation*}
 $$
@@ -549,7 +545,7 @@ p(x|y) =
 =
 \frac
 {1}
-{{\mathbf{\sqrt{(2\pi)^{p}|L|}}}}
+{\mathbf{\sqrt{(2\pi)^{p}|L|}}}
 \mathbf{e^{\frac {1} {2} (\mathbf{x} - \mathbf{\mu}_*)^\mathsf{T} \mathbf{L} (\mathbf{x} - \mathbf{\mu}_*)}}
 \hspace{1cm} \text{(2.3-4)}
 $$
