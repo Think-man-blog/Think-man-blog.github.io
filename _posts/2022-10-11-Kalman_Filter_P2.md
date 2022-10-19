@@ -475,7 +475,9 @@ p(x|y) =
 \mathbf{e^{\frac {1} {2} (\mathbf{x} - \mathbf{\mu}_*)^\mathsf{T} \mathbf{L} (\mathbf{x} - \mathbf{\mu}_*)}}
 $$
 
-Lúc này $p(x|y)$ đã ra hình dáng của hàm phân phối xác suất Gaussian, hãy thử kiểm tra xem biểu thức dưới đây có bằng nhau hay không:
+Lúc này 
+$p(x|y)$ 
+đã ra hình dáng của hàm phân phối xác suất Gaussian, hãy thử kiểm tra xem biểu thức dưới đây có bằng nhau hay không:
 
 $$
 \large
