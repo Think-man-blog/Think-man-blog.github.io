@@ -480,10 +480,12 @@ Lúc này $p(x|y)$ đã ra hình dáng của hàm phân phối xác suất Gauss
 $$
 \large
 \frac 
-{\mathbf{\sqrt{(2\pi)^{q}
-|\Sigma_y|}}}
-{\mathbf{\sqrt{(2\pi)^{p+q}
-|\Sigma_z|}}}
+{
+    \mathbf{\sqrt{(2\pi)^{q}|\Sigma_y|}}
+}
+{
+    \mathbf{\sqrt{(2\pi)^{p+q}|\Sigma_z|}}
+}
 = 
 \frac
 {1}
