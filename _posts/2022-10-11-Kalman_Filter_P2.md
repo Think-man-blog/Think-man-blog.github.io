@@ -435,7 +435,8 @@ $$
 \mathbf{
 p(z) = p(x,y) = \frac 
 {\mathbf{e^{\frac {1} {2} \left(z-\mu_z\right)^{\mathsf{T}}\Sigma_{z}^{-1}\left(z-\mu_z\right)}}} 
-{\mathbf{\sqrt{(2\pi)^{p+q}|\Sigma_z|}}}
+{\mathbf{\sqrt{(2\pi)^{p+q}
+|\Sigma_z|}}}
 }
 $$
 
@@ -557,7 +558,30 @@ $$
 
 Tuy nhiên nếu bạn cập nhật cho [$\overline{\mathbf{x}^{t+1}}'$](https://think-man-blog.github.io/2022/10/09/Kalman_Filter_P1.html) ngay tại lúc này thật là phí phạm phần đồng nhất thức ma trận woodbury mà mình đã trình bày, hãy đi sâu hơn một tí nữa nhé. 
 
+🤓🤓🤓 Hãy chú ý nhé, lần này sẽ thêm yếu tố thời gian vào đấy, kẻo bị loạn mắt.
 
+Trong [bài trước](https://think-man-blog.github.io/2022/10/09/Kalman_Filter_P1.html), nếu bạn đã đọc kỹ sẽ biết được.
+
+$$
+\mathbf{
+p(x|y) = p(x^{t+1}|y^{t+1})
+}
+$$
+
+Vì thế ở đây ta sẽ chú thích một số ký hiệu đã dùng ở trên:
+
+$$
+\mathbf{\Sigma_{xx} = \Sigma_{x^{t+1}} = F\Sigma_{x^{t}}F^{\mathsf{T}}+Q} 
+$$
+
+$$
+\mathbf{\Sigma_{yy} = \Sigma_{y^{t+1}} = H\Sigma_{x^{t}}H^{\mathsf{T}}+R} 
+$$
+
+$$
+\mathbf{\Sigma_{xy} = \Sigma_{x^{t+1},y^{t+1}} =
+\Sigma_{x^{t+1},\mathbf{H}*\mathbf{x}^{t+1} + \mathbf{v}^{t+1}} = H\Sigma_{x^{t}}H^{\mathsf{T}}+R} 
+$$
 
 # 3 Giải thích về chú thích cho các mục.
 
