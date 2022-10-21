@@ -272,14 +272,8 @@ như lúc trước, và nếu $\mathbf{n \gg k}$ thì thật sự, tốc độ t
 
 ***Note: hãy tính toán 6 phép nhân thông minh, đừng để bị dính vào phép nhân $\mathbf{n^{3}}$ nhé. Còn một điều nữa, "Đồng nhất thức ma trận Woodbury" còn có thể áp dụng cho trường hợp ma trận $\mathbf{A}$ là ma trận tam giác.***
 
-Vậy điều này có nghĩa gì 🤔🤔🤔, bạn có để ý thấy 
-$\mathbf{(A+UCV)^{-1}}$ 
-giống với ma trận nào của chúng ta không?
-
-Bạn đoán đúng rồi đấy, đó chính là ma trận 
-$\mathbf{L = (A-BD^{-1}B^\mathsf{T})^{-1}}$
-. Chà chà, mọi thứ có vẻ work với nhau rồi chứ.
-Hãy chờ đợi bí mật được khai phá ở mục tiếp theo nhé.
+Vậy điều này có nghĩa gì 🤔🤔🤔,
+hãy chờ đợi bí mật được khai phá ở mục tiếp theo nhé.
 
 Nào hãy cùng mình chứng minh về "Đồng nhất thức ma trận Woodbury" nhé.
 
@@ -313,7 +307,7 @@ $$
 
 ## 2.3 Conditional Gaussian distributions
 
-Đây chính là phần chính của phần giải thích hệ số Kalman. Các bạn hãy tập trung theo dõi nhé.
+Đây là một hướng giải thích cho hệ số Kalman. Các bạn hãy tập trung theo dõi nhé.
 
 Chúng ta đã phân tích ở trên về 
 $p(x^{t}|y^{t})$
@@ -407,14 +401,14 @@ $$
 + 
 \mathbf{\left(y-\mu_y\right)^{\mathsf{T}}\Lambda_{yx}^{-1}\left(x-\mu_x\right)}
 +
-\mathbf{\left(y-\mu_y\right)^{\mathsf{T}}\Lambda_{yy}^{-1}\left(y-\mu_y\right)} \hspace{1cm} (\text{2.3 *}) 
+\mathbf{\left(y-\mu_y\right)^{\mathsf{T}}\Lambda_{yy}^{-1}\left(y-\mu_y\right)} \hspace{1cm} (\text{2.3 I}) 
 \\[6pt]
 & \text{Sử dụng (\text{2.3-1})  Schur Complement of matrix}
 \\[6pt]
 & = 
 \quad (\mathbf{x} - \mathbf{\mu_x})^\mathsf{T} \mathbf{L} (\mathbf{x} - \mathbf{\mu_x}) - (\mathbf{x} - \mathbf{\mu_x})^\mathsf{T} \mathbf{L} \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}) \\[6pt] &\quad - (\mathbf{y} - \mathbf{\mu_y})^\mathsf{T} \mathbf{\Sigma}_{yy}^{-1} \mathbf{\Sigma}_{yx} \mathbf{L} (\mathbf{x} - \mathbf{\mu_x}) + (\mathbf{y} - \mathbf{\mu_y})^\mathsf{T} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}) \\[6pt] &\quad + (\mathbf{y} - \mathbf{\mu_y})^\mathsf{T} \mathbf{\Sigma}_{yy}^{-1} \mathbf{\Sigma}_{yx} \mathbf{L} \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}) \\[6pt]
 &= 
-\quad (\mathbf{x} - (\mathbf{\mu_x} + \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y})))^\mathsf{T} \mathbf{L} (\mathbf{x} - (\mathbf{\mu_x} + \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}))) \\[6pt] &\quad + (\mathbf{y} - \mathbf{\mu_y})^\mathsf{T} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}) \hspace{1cm} (\text{2.3 **}) \\[6pt]
+\quad (\mathbf{x} - (\mathbf{\mu_x} + \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y})))^\mathsf{T} \mathbf{L} (\mathbf{x} - (\mathbf{\mu_x} + \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}))) \\[6pt] &\quad + (\mathbf{y} - \mathbf{\mu_y})^\mathsf{T} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}) \hspace{1cm} (\text{2.3 II}) \\[6pt]
 &= 
 \quad (\mathbf{x} - \mathbf{\mu}_*)^\mathsf{T} \mathbf{L} (\mathbf{x} - \mathbf{\mu}_*) + (\mathbf{y} - \mathbf{\mu_y})^\mathsf{T} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}) \hspace{1cm} \text{(2.3-2)}\\[6pt] 
 \end{split}
@@ -451,7 +445,9 @@ p(y) = \frac
 }
 $$
 
-Từ $\text{(1-3)}$ (đã bỏ yếu tố thời gian) ta có:
+Từ 
+$\text{(1-3)}$ 
+(đã bỏ yếu tố thời gian) ta có:
 
 $$
 \large
@@ -490,6 +486,8 @@ $$
 {\mathbf{\sqrt{(2\pi)^{p}|L|}}}
 $$
 
+Phân tích về trái của đẳng thức.
+
 $$
 \large
 \begin{equation*}
@@ -519,7 +517,7 @@ $$
 \left|\Sigma_{xx} - \Sigma_{xy}\Sigma_{yy}^{-1}\Sigma_{yx}\right|^{-1}}
 }
 {\mathbf{(2\pi)^{p}}} 
-\hspace{1cm} (2.3 ***)
+\hspace{1cm} \text{(2.3-III)}
 \\[6pt]
 & =
 \sqrt\frac 
@@ -558,7 +556,7 @@ $$
 \mu_* = \mathbf{\mu_x} + \mathbf{\Sigma_{xy}} \mathbf{\Sigma}_{yy}^{-1} (\mathbf{y} - \mathbf{\mu_y}),\space\mathbf{L = \Sigma_{xx} - \Sigma_{xy}\Sigma_{yy}^{-1}\Sigma_{yx}} \hspace{1cm} \text{(2.3-3)}
 $$
 
-Tuy nhiên nếu bạn cập nhật cho [$\overline{\mathbf{x}^{t+1}}'$](https://think-man-blog.github.io/2022/10/09/Kalman_Filter_P1.html) ngay tại lúc này thật là phí phạm phần đồng nhất thức ma trận woodbury mà mình đã trình bày, hãy đi sâu hơn một tí nữa nhé. 
+Đến đây đã gần như là hoàn thiện, hãy đi sâu vào nữa để ra được kết quả nhé.
 
 🤓🤓🤓 Hãy chú ý nhé, lần này sẽ thêm yếu tố thời gian vào đấy, kẻo bị loạn mắt.
 
@@ -573,42 +571,80 @@ $$
 Vì thế ở đây ta sẽ chú thích một số ký hiệu đã dùng ở trên:
 
 $$
-\mathbf{\Sigma_{xx} = \Sigma_{x^{t+1}} = F\Sigma_{x^{t}}F^{\mathsf{T}}+Q} 
+\begin{equation*}
+\begin{aligned}
+\mathbf{\mu_x} &= \mathbf{\mu_{x^{t+1}}} \hspace{1cm} (\text{2.3-5})
+\\[6pt]
+\mathbf{\Sigma_{xx} = \Sigma_{x^{t+1}}} &= \mathbf{F\Sigma_{x^{t}}F^{\mathsf{T}}+Q} \hspace{1cm} (\text{2.3-6})
+\\[6pt]
+\mathbf{\mu_y = H\mu_x} &= \mathbf{H\mu_x^{t+1}} \hspace{1cm} (\text{2.3-7})
+\\[6pt]
+\mathbf{\Sigma_{yy} = \Sigma_{y^{t+1}} } &= \mathbf{ H\Sigma_{x^{t + 1}}H^{\mathsf{T}}+R} \hspace{1cm} (\text{2.3-8})
+\\[6pt]
+\mathbf{\Sigma_{xy}} &= \mathbf{\Sigma_{x^{t+1}} H^{\mathsf{T}}} \hspace{1cm} (\text{2.3-9}) - (\text{2.3-IV})
+\\[6pt]
+\mathbf{\Sigma_{yx}} = \mathbf{\Sigma_{xy}^{\mathsf{T}}} = \mathbf{H\Sigma_{x^{t+1}}^{\mathsf{T}}}
+&= \mathbf{H\Sigma_{x^{t+1}}} \hspace{1cm} (\text{2.3-10})
+\end{aligned}
+\end{equation*}
+$$
+
+Thế 
+$\text{(2.3-5)}$
+$\text{(2.3-6)}$
+$\text{(2.3-7)}$
+$\text{(2.3-8)}$
+$\text{(2.3-9)}$
+$\text{(2.3-10)}$
+vào 
+$\text{(2.3-3)}$ 
+
+$$
+\mu_* = \mu_{x|y} = \mu_{x^{t+1}|y^{t+1}}  = \mathbf{\mu_{x^{t+1}}} + \mathbf{\Sigma_{x^{t+1}} H^{\mathsf{T}}} \mathbf{(H\Sigma_{x^{t+1}}H^{\mathsf{T}}+R)^{-1}} (\mathbf{y}^{t+1} - H\mu_{x^{t+1}})
 $$
 
 $$
-\mathbf{\Sigma_{yy} = \Sigma_{y^{t+1}} = H\Sigma_{x^{t}}H^{\mathsf{T}}+R} 
+\begin{equation*}
+\begin{aligned}
+\mathbf{L} = \mathbf{\Sigma_{x|y}} = \mathbf{\Sigma_{x^{t+1}|y^{t+1}}} &= \mathbf{\Sigma_{xx} - \Sigma_{xy}\Sigma_{yy}^{-1}\Sigma_{yx}} \\[6pt]
+&= \mathbf{\Sigma_{x^{t+1}} - \Sigma_{x^{t+1}} H^{\mathsf{T}} (H\Sigma_{x^{t + 1}}H^{\mathsf{T}}+R)^{-1}H\Sigma_{x^{t+1}}}\\[6pt]
+\end{aligned}
+\end{equation*}
 $$
 
+Gọi $\mathbf{K}$ là hệ số Kalman:
+
 $$
-\mathbf{\Sigma_{xy} = \Sigma_{x^{t+1},y^{t+1}} =
-\Sigma_{x^{t+1},\mathbf{H}*\mathbf{x}^{t+1} + \mathbf{v}^{t+1}} = H\Sigma_{x^{t}}H^{\mathsf{T}}+R} 
+\mathbf{K^{t+1} = \Sigma_{x^{t+1}}\mathbf{H}^{\mathbf{T}} (H\Sigma_{x^{t+1}}H^{\mathsf{T}} + R)^{-1}} \hspace{1cm} \text{2.3-11}
 $$
 
-# 3 Giải thích về chú thích cho các mục.
+Ta có:
 
+$$
+\begin{equation*}
+\begin{aligned}
+\mu_{x^{t+1}|y^{t+1}} &= \mathbf{\mu_x^{t+1}} + \mathbf{K^{t+1}} (\mathbf{y}^{t+1} - H\mu_x^{t+1}) \hspace{1cm} \text{(2.3-12)}\\[6pt]
+\mathbf{\Sigma_{x^{t+1}|y^{t+1}}} &= 
+\mathbf{\Sigma_{x^{t+1}} - K^{t+1}H\Sigma_{x^{t+1}}}\\[6pt]
+&= \mathbf{(I - K^{t+1}H)\Sigma_{x^{t+1}}}\\[6pt]
+&= \mathbf{\Sigma_{x^{t+1}}(I - K^{t+1}H)}\hspace{1cm} \text{(2.3-12)-(2.3-V)}
+\end{aligned}
+\end{equation*}
+$$
 
+Vậy là hệ số Kalman và bước cập nhật ở [phần 1](https://think-man-blog.github.io/2022/10/09/Kalman_Filter_P1.html) đã được chứng minh tại đây, hãy cùng tiếp tục đến với hướng tiếp cận tiếp theo nhé.
 
+# 3 Bayes’ theorem for Gaussian variables
 
+Mỏi tay quá!!! Đợi mình thêm nhá.
 
+<!-- Tuy nhiên nếu bạn cập nhật cho [$\overline{\mathbf{x}^{t+1}}'$](https://think-man-blog.github.io/2022/10/09/Kalman_Filter_P1.html) ngay tại lúc này thật là phí phạm phần đồng nhất thức ma trận woodbury mà mình đã trình bày, hãy đi sâu hơn một tí nữa nhé.  -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 4 Giải thích về chú thích cho các mục.
 
 ***Note:*** Mình sẽ giải thích kết quả của Mahalanobis ở trên cho đọc giả dễ hiểu và dễ dàng tiếp cận hơn.
 
-$(\text{2.3 *})$ Ở đây là một cách viết lại của phép nhân ma trận, mình sẽ ví dụ một cách dễ hiểu để bạn hiểu được:
+$(\text{2.3-I})$ Ở đây là một cách viết lại của phép nhân ma trận, mình sẽ ví dụ một cách dễ hiểu để bạn hiểu được:
 
 $$
 \begin{bmatrix}
@@ -672,7 +708,7 @@ $$
 
 Tương tự, hãy chia các ma trận thành tổng các ma trận có các thành phần khuyết bằng 0, kết quả của Mahalanobis distance là một số, vì thế ta có thể lược bỏ phần khuyết bằng 0 nếu nó không ảnh hưởng đến kết quả.
 
-$(\text{2.3 **})$ Nếu ở bước này có ai quá nhanh và không hiểu thì mình xin được trình bày chậm lại như sau (Các ma trận có cùng kích thước, vì thế chúng ta có thể gom nhóm lại với nhau để làm nhân tử chung).
+$(\text{2.3-II})$ Nếu ở bước này có ai quá nhanh và không hiểu thì mình xin được trình bày chậm lại như sau (Các ma trận có cùng kích thước, vì thế chúng ta có thể gom nhóm lại với nhau để làm nhân tử chung).
 
 $$
 \begin{equation*}
@@ -688,5 +724,76 @@ $$
 \end{equation*} 
 $$
 
+$\text{2.3-III}$ Sử dụng [Schur complements](https://www.statlect.com/matrix-algebra/Schur-complement) và [Block-matrix](https://www.statlect.com/matrix-algebra/determinant-of-block-matrix)
+
+$$
+\begin{equation*}
+\begin{aligned}
+
+\left|\begin{matrix}
+\mathbf{A}&\mathbf{B}\\
+\mathbf{B^{\mathsf{T}}}&\mathbf{D}
+\end{matrix}\right| &= 
+\left|\begin{matrix}
+\mathbf{I}&\mathbf{BD^{-1}}\\
+\mathbf{0}&\mathbf{I}
+\end{matrix}\right|
+\left|\begin{matrix}
+\mathbf{A-BD^{-1}C}&\mathbf{0}\\
+\mathbf{0}&\mathbf{D}
+\end{matrix}\right|
+\left|\begin{matrix}
+\mathbf{I}&\mathbf{0}\\
+\mathbf{D^{-1}C}&\mathbf{I}
+\end{matrix}\right|
+\\[6pt]
+&=\mathbf{1\times|D|\times\left|A-BD^{-1}C\right|\times 1}
+\end{aligned}
+\end{equation*}
+$$
+
+$\text{2.3-IV}$
+
+$$
+\begin{equation*}
+\begin{aligned}
+\mathbf{\Sigma_{xy}}
+&= \mathbf{\mathbb{E}\left[(x-\mu_x) (y-\mu_y)^{\mathsf{T}}\right]} \hspace{1cm} (\text{Định nghĩa ma trận covariance}) \\[6pt]
+&= \mathbf{\mathbb{E}\left[\Delta x \Delta y^{\mathsf{T}}\right]} \hspace{1cm} (\Delta x = (x-\mu_x),\space \Delta y = (y-\mu_y))\\[6pt] 
+&= \mathbf{\mathbb{E}\left[\Delta x (\mathbf{H}*\Delta x+ \Delta\mathbf{v})^{\mathsf{T}}\right]} \\[6pt]
+&= \mathbf{\mathbb{E}\left[\Delta x \Delta x ^{\mathsf{T}} \mathbf{H}^{\mathsf{T}}+ \Delta x\Delta v^{\mathsf{T}}\right]} \\[6pt]
+&= \mathbf{\mathbb{E}\left[\Delta x \Delta x ^{\mathsf{T}} \right]H^{\mathsf{T}}+ \mathbb{E}\left[\Delta x\Delta v^{\mathsf{T}}\right]} \\[6pt]
+&= \mathbf{\Sigma_x H^{\mathsf{T}}} \hspace{1cm} (\text{giả sử x và v độc lập} \Leftrightarrow \Sigma_{xv} = 0) \\[6pt]
+&= \mathbf{\Sigma_{x^{t+1}} H^{\mathsf{T}}}
+\end{aligned}
+\end{equation*}
+$$
+
+$\text{2.3-IV}$
+
+$$
+\begin{equation*}
+\begin{aligned}
+\mathbf{\Sigma_{x^{t+1}|y^{t+1}}} &= 
+\mathbf{(I - K^{t+1}H)\Sigma_{x^{t+1}}} \hspace{1cm} \mathbf{\Sigma_{x^{t+1}|y^{t+1}},\space \Sigma_{x^{t+1}}}\space\text{đối xứng}\\[6pt]
+\mathbf{\Sigma_{x^{t+1}|y^{t+1}}\Sigma_{x^{t+1}}^{-1}} &= \mathbf{(I - K^{t+1}H)} \hspace{1cm} \Rightarrow \mathbf{(I - K^{t+1}H)} \space\text{đối xứng}\\[6pt]
+\mathbf{\Sigma_{x^{t+1}|y^{t+1}}} &= \mathbf{\left[(I - K^{t+1}H)\Sigma_{x^{t+1}}\right]}^{\mathsf{T}}\\[6pt]
+&= \mathbf{\Sigma_{x^{t+1}}(I - K^{t+1}H)}
+\end{aligned}
+\end{equation*}
+$$
 
 
+# 5 Tài liệu tham khảo
+
+1. [Bishop-Pattern-Recognition-and-Machine-Learning-2006](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+
+2. [Kalman1960](https://www.cs.unc.edu/~welch/kalman/media/pdf/Kalman1960.pdf)
+
+3. [Determinant-of-block-matrix](https://www.statlect.com/matrix-algebra/determinant-of-block-matrix)
+
+4. [Deriving-the-conditional-distributions-of-a-multivariate-normal-distribution](https://stats.stackexchange.com/questions/30588/deriving-the-conditional-distributions-of-a-multivariate-normal-distribution)
+
+5. [BayesTheoremForGaussians](http://web4.cs.ucl.ac.uk/staff/C.Bracegirdle/bayesTheoremForGaussians.pdf)
+
+6. [Symmetric-matrices](https://www.quora.com/If-A-and-B-are-symmetric-matrices-then-is-AB-also-symmetric)
